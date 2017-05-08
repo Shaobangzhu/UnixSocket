@@ -1,0 +1,45 @@
+Name: Chaoran Lu
+StudentID: 6524-2400-52
+
+1. What you have done in this assignment?
+	In this socket programming project, I used UNIX C/C++ to implement a simple model of computational offloading. The system 		consists of three different parts: one client, one edge server and two backend servers, which performed bitwise "and" and 		"or" operations. This program will take input txt files and output the result when you run ./client <input_file_name> in the 		client command line window.
+
+2. What your code files are and what each one of them does?
+	In my code file there are four cpp files, one edge.h file along with one README and one MAKEFILE.(In total 7 files)
+	The four cpp files are: edge.cpp, server_and.cpp, server_or.cpp and client.cpp.
+
+	edge.cpp:       It is responsible for communicating with the client, receive the job file, dispatches the job to the two 			        backend servers, receives their responses, builds the final result and sends it back to the client;
+
+	edge.h:		It stores all the edge.cpp header information. There are also some functions I put in it:
+			a) find_server; b) find_client; c) send_all these 3 comes from Beej
+			d) send_batch e) recv_batch I made these two functions myself
+
+	server_and.cpp: It performs bitwise "and" operation on the job, which is distributed by edge.cpp. Then it will send the 		        result back to the edge server.
+
+	server_or.cpp:  It performs bitwise "or" operation on the job, which is distributed by edge.cpp. Then it will send the 		        	result back to the edge server.
+
+	client.cpp:     It submits the input job file to the edge server and receive the final result from edge.
+
+3. What the TA need to do to run my program?
+	a. open a commandline window in ubuntu and cd into my ee450_luchaora_session1 directory;
+	b. input "make all" to compile everything
+	c. Then in the same window, iput "make server_and" then the "and" server will be active(You can also start edge or server_or 		   first)
+	d. Open another three windows, all cd to my file directory, input "make server_or" "make edge" seperately in two of them, so 		   by now you successfully activate all the servers
+	e. In the last window, input "./client <input_file_name>", then you will have your result
+
+4. The format of all the messages exchanged?
+	Messages are exchanged in string format.
+
+5. Any idiosycrasy of your project? 
+	I have two computers, one desktop running a windows OS and one Mac. I install virtual_box to both of them. I wrote my program 		on my mac, but I tested this project in both computers. A very wired thing occur when I firstly switch the computer. Then 		I found out it is because a initialization problem. I'd prefer you using a mac to run my code. But if you don't have a mac 		and something goes wrong such as it cannot read the input file. Please let me know ASAP. I will bring you my laptop to grade 		my project.
+
+6. REUSED CODE: 
+	Most the REUSED CODE in my project comes from Beej
+	In edge.cpp: line 62 to 80
+	In edge.h: line 30 to 69
+	In server_and.cpp: line 55 to 71
+	In server_or.cpp: line 58 to 74
+	In client.cpp: line 29 to 39
+
+	Some functions for edge.cpp are in edge.h
+
